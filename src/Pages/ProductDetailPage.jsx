@@ -1,4 +1,13 @@
-const ProductDetailsPage = () => {
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'   
+import axios from 'axios'
+
+
+const ProductDetailPage = () => {
+
+  
+
+
   return (
     <div className="bg-gray-100 min-h-screen py-10 px-4">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-md p-8">
@@ -137,4 +146,4 @@ const ProductDetailsPage = () => {
   );
 };
 
-export default ProductDetailsPage;
+export default ProductDetailPage;

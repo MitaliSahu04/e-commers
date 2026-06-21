@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {useState,useEffect} from "react"
 import FilterSideBar from "../components/FilterSideBar";
 import axios from "axios";
@@ -7,6 +8,8 @@ import happyGif from "../assets/Happy Dance GIF.gif";
 const Products = () => {
 const [productData,setProductData]= useState([])
 const [loading,setLoading] = useState(false)
+const navigate = useNavigate() 
+
 
 
 useEffect(()=>{
@@ -27,6 +30,13 @@ useEffect(()=>{
   fetchProductData()
 
 },[])
+
+// function handleProductClick({id}){
+//   navigate(`/product/${product.id}`)
+
+// }
+
+
 
   return (
   <>
@@ -54,6 +64,7 @@ useEffect(()=>{
             src={product.images[0]}
             alt={product.title}
             className="w-full h-60 object-cover"
+            // onClick={handleProductClick}
           />
 
           <div className="p-4">
