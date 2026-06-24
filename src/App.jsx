@@ -7,9 +7,7 @@ import CategoryPdp from "./Pages/CategoryPdp";
 import Contact from "./pages/Contact";
 import Home from "./Pages/Home";
 import Products from "./Pages/Products";
-import Categories from "./Pages/Categories";
-import About from "./Pages/About";
-// import ProductDetailPage from "./Pages/ProductDetailPage";
+import ProductDetailPage from "./Pages/ProductDetailPage";
 import CategoryData from "./Pages/CategoryData";
 
 const router = createBrowserRouter([
@@ -45,6 +43,11 @@ const router = createBrowserRouter([
         path: "/categoriespage/:slug/:id",
         element: <CategoryData />,
       },
+       {
+        path: "product/:productID",
+        element: <ProductDetailPage />
+      },
+
     ],
   },
 ]);
