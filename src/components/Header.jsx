@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef ,useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Menu,
@@ -13,19 +13,60 @@ import {
   LogOut,
 } from "lucide-react";
 
+
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
 
   const navStyle = ({ isActive }) =>
     isActive
       ? "text-blue-600 border-b-2 border-blue-600 pb-1 font-semibold"
       : "text-gray-700 hover:text-blue-600 pb-1 border-b-2 border-transparent transition-all";
 
+useEffect(() => {
+  const handleClickOutside = (e) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(e.target)
+    ) {
+      setShowDropdown(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
+
+
   const HandleProfilePage = () => {
     setShowDropdown(false);
     navigate("/profilepage");
   };
+
+  const HandleDashboard=()=>{
+    setShowDropdown(false);
+    navigate("/dashboard");
+  }
+
+   const HandleAddress=()=>{
+    setShowDropdown(false);
+    navigate("/addresspage");
+  }
+   
+   const HandleSetting=()=>{
+    setShowDropdown(false);
+    navigate("/settingpage");
+  }
+
+   const HandleChangePassword=()=>{
+    setShowDropdown(false);
+    navigate("/changepasswordpage");
+  }
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -74,8 +115,7 @@ const Header = () => {
             {/* My Account */}
             <div
               className="relative"
-              onMouseEnter={() => setShowDropdown(true)}
-              onMouseLeave={() => setShowDropdown(false)}
+              ref={dropdownRef}
             >
               <button
                 onClick={() => setShowDropdown((prev) => !prev)}
@@ -107,22 +147,30 @@ const Header = () => {
                     Profile
                   </button>
 
-                  <button className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
+                  <button 
+                    onClick={HandleDashboard}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
                     <LayoutDashboard size={18} />
                     Dashboard
                   </button>
 
-                  <button className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
+                  <button 
+                    onClick={HandleAddress}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
                     <MapPin size={18} />
                     Address
                   </button>
 
-                  <button className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
+                  <button 
+                    onClick={HandleSetting}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
                     <Settings size={18} />
                     Settings
                   </button>
 
-                  <button className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
+                  <button 
+                    onClick={HandleChangePassword}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100 transition">
                     <KeyRound size={18} />
                     Change Password
                   </button>
