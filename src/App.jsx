@@ -15,6 +15,10 @@ import ProductDetailsPage from "./Pages/ProductDetailsPage";
 import Products from "./Pages/Products";
 import ProfilePage from "./Pages/ProfilePage";
 import CreateAccount from "./Pages/CreateAccountPage";
+import DashboardPage from "./Pages/Dashboard";
+import AddressPage from "./Pages/AddressPage";
+import SettingsPage from "./Pages/SettingPage";
+import ChangePasswordPage from "./Pages/ChangePasswordPage";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +66,26 @@ const router = createBrowserRouter([
       {
         path: "editprofilepage",
         element: <EditProfilePage />,
+      },
+
+      {
+        path: "dashboard",
+        element: <DashboardPage />,
+      },
+
+      {
+        path: "addresspage",
+        element: <AddressPage />,
+      },
+
+       {
+        path: "settingpage",
+        element: <SettingsPage />,
+      },
+
+      {
+        path: "changepasswordpage",
+        element: <ChangePasswordPage />,
       },
     ],
   },
